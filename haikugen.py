@@ -1,11 +1,9 @@
 import random
 from nltk.corpus import words
 
-complexity = 'en'
-
+complexity = 'en-basic'
 
 def syllcount(the_text):
-
     clean_text = ""
     for ch in the_text:
         if ch in "abcdefghijklmnopqrstuvwxyz'’":
@@ -71,10 +69,33 @@ def getnsyllwords(n):
         ret.append(word)
     return ret
 
-first = ' '.join(getnsyllwords(5))
-second = ' '.join(getnsyllwords(7))
-third = ' '.join(getnsyllwords(5))
 
-print(first)
-print(second)
-print(third)
+def addrandomcomma(first, second, third):
+    to_add = random.randint(0, 1)
+    if to_add == 0:
+        return first, second, third
+    who_to_add = random.randint(1, 3)
+    if who_to_add == 1:
+        size = len(first)
+        i = random.randint(0, size-1)
+        first[i] = first[i] + ','
+    if who_to_add == 2:
+        size = len(second)
+        i = random.randint(0, size-1)
+        second[i] = second[i] + ','
+    if who_to_add == 3:
+        size = len(third)
+        i = random.randint(0, size-1)
+        third[i] = third[i] + ','
+
+    return first, second, third
+
+
+def genhaiku():
+    first = getnsyllwords(5)
+    second = getnsyllwords(7)
+    third = getnsyllwords(5)
+
+    first, second, third = addrandomcomma(first, second, third)
+
+    return ' '.join(first), ' '.join(second), ' '.join(third)

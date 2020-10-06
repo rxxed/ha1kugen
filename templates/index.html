@@ -5,17 +5,59 @@
                 <style>
                         html {
                                 font-family: mono;
-                                background-image: url('static/img/dr-manhattan.jpg');
+                                background-image: url('static/img/dr-manhattan-mirror.jpg');
                                 background-size: 100% 100%;
                                 background-attachment: fixed;
                                 background-repeat: no-repeat;
+                                text-align: center;
                         }
                         h1 {
                                 color: magenta;
                         }
+                        p {
+                                color: #fff;
+                                text-align: justify;
+                                text-align-last: center;
+                        }
+                        #haiku {
+                                color: #99ff33;
+                        }
+                        #submit {
+                            border-radius:60px;
+                            color: #fff;
+                            font-size: 15px;
+                            text-decoration: none;
+                            cursor: pointer;
+                            border:none;
+                            border: 1px solid #000;
+                            background:magenta;
+                        }
+                        #submit:hover {
+                            border: none;
+                            box-shadow: 0px 0px 1px #777;
+                            border: 1px solid #000;
+                            background-color: #000;
+                        }
                 </style>
         </head>
         <body>
-                <h1>haikugen</h1>
+
+                <br><br><br>
+
+                <h1>Haikugen</h1>
+                <p>Click <i>generate</i> to get your dose of wisdom.</p>
+
+                <form method="POST" action="/">
+                        <input type="submit" name="generate" value="generate" id="submit">
+                </form>
+
+                <br>
+
+                <p id=haiku>
+                        <br>{{ first }}
+                        <br>{{ second }}
+                        <br>{{ third }}
+                <p>
+
         </body>
 </html>
